@@ -4,7 +4,7 @@ import BusinessCard from './BusinessCard';
 
 const BusinessList = ({ businesses }) => {
   if (!businesses) {
-    return null; // o puedes devolver algún componente de "cargando" aquí
+    return null;
   }
 
   return (

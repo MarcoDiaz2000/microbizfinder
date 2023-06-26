@@ -1,59 +1,57 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getBusinessDetails } from '../apis/yelpAPI';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchBusinessDetails } from '../redux/business/businessDetails';
 
 const BusinessDetails = () => {
   const { id } = useParams();
-  const [businessDetails, setBusinessDetails] = useState(null);
+  const dispatch = useDispatch();
+
+  const { isFetching, details, error } = useSelector((state) => state.businessDetails);
 
   useEffect(() => {
-    const fetchBusinessDetails = async () => {
-      try {
-        const details = await getBusinessDetails(id);
-        setBusinessDetails(details);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+    dispatch(fetchBusinessDetails(id));
+  }, [dispatch, id]);
 
-    fetchBusinessDetails();
-  }, [id]);
-
-  if (!businessDetails) {
+  if (isFetching) {
     return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return (
+      <div>
+        Error:
+        {error.message}
+      </div>
+    );
+  }
+
+  if (!details) {
+    return <div>No details available</div>;
   }
 
   return (
     <div>
-      <h1>{businessDetails.name}</h1>
+      <h1>{details.name}</h1>
       {/* Aquí puedes renderizar el resto de los detalles del negocio */}
       {/* Por ejemplo: */}
-      <p>{businessDetails.phone}</p>
-      <p>{businessDetails.location.address1}</p>
-      <p>{businessDetails.location.city}</p>
-      <p>{businessDetails.location.zip_code}</p>
-      <img src={businessDetails.image_url} alt={businessDetails.name} />
+      <p>{details.phone}</p>
+      <p>{details.location.address1}</p>
+      <p>{details.location.city}</p>
+      <p>{details.location.zip_code}</p>
+      <img src={details.image_url} alt={details.name} />
       <p>
         Rating:
-        {businessDetails.rating}
+        {details.rating}
       </p>
       <p>
-        {businessDetails.review_count}
+        {details.review_count}
         {' '}
         reviews
       </p>
       {/* y más... */}
     </div>
   );
-};
-
-BusinessDetails.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string,
-    }),
-  }).isRequired,
 };
 
 export default BusinessDetails;

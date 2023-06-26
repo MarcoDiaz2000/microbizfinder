@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BusinessDetails should render with given state from Redux store 1`] = `
+<div>
+  <h1>
+    Test Business
+  </h1>
+  <p>
+    +11234567890
+  </p>
+  <p>
+    123 Test St
+  </p>
+  <p>
+    Test City
+  </p>
+  <p>
+    12345
+  </p>
+  <img
+    alt="Test Business"
+    src="test.jpg"
+  />
+  <p>
+    Rating:
+    4.5
+  </p>
+  <p>
+    100
+     
+    reviews
+  </p>
+</div>
+`;

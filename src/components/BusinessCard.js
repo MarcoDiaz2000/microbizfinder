@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const BusinessCard = ({ business }) => (
-  <div className="business-card">
+  <div className="business-card" data-testid="business-card">
     <h2>{business.name}</h2>
     <img src={business.image_url} alt={business.name} />
     <p>{business.categories.map((category) => category.title).join(', ')}</p>

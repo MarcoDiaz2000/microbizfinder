@@ -1,32 +1,64 @@
-import { getBusinessDetails as fetchDetailsFromAPI } from '../apis/yelpAPI';
+import { getBusinessDetails } from '../../apis/yelpAPI';
 
 // Action types
-export const SET_BUSINESS_DETAILS = 'SET_BUSINESS_DETAILS';
+export const REQUEST_BUSINESS_DETAILS = 'REQUEST_BUSINESS_DETAILS';
+export const RECEIVE_BUSINESS_DETAILS = 'RECEIVE_BUSINESS_DETAILS';
+export const ERROR_BUSINESS_DETAILS = 'ERROR_BUSINESS_DETAILS';
 
 // Action creators
-export const setBusinessDetails = (businessDetails) => ({
-  type: SET_BUSINESS_DETAILS,
-  payload: businessDetails,
+export const requestBusinessDetails = () => ({
+  type: REQUEST_BUSINESS_DETAILS,
+});
+
+export const receiveBusinessDetails = (details) => ({
+  type: RECEIVE_BUSINESS_DETAILS,
+  payload: details,
+});
+
+export const errorBusinessDetails = (error) => ({
+  type: ERROR_BUSINESS_DETAILS,
+  payload: error,
 });
 
 // Reducer
-const initialState = null;
+const initialState = {
+  isFetching: false,
+  details: null,
+  error: null,
+};
 
 export const businessDetailsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_BUSINESS_DETAILS:
-      return action.payload;
+    case REQUEST_BUSINESS_DETAILS:
+      return {
+        ...state,
+        isFetching: true,
+      };
+    case RECEIVE_BUSINESS_DETAILS:
+      return {
+        ...state,
+        isFetching: false,
+        details: action.payload,
+      };
+    case ERROR_BUSINESS_DETAILS:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.payload,
+      };
     default:
       return state;
   }
 };
 
 // Thunk
-export const fetchBusinessDetails = (businessId) => async (dispatch) => {
+export const fetchBusinessDetails = (id) => async (dispatch) => {
+  dispatch(requestBusinessDetails());
+
   try {
-    const details = await fetchDetailsFromAPI(businessId);
-    dispatch(setBusinessDetails(details));
+    const details = await getBusinessDetails(id);
+    dispatch(receiveBusinessDetails(details));
   } catch (error) {
-    console.error(error);
+    dispatch(errorBusinessDetails(error));
   }
 };

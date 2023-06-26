@@ -1,10 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-
-const dummyReducer = (state = {}) => state;
+import { businessDetailsReducer } from './business/businessDetails';
 
 const store = configureStore({
   reducer: {
-    dummy: dummyReducer,
+    businessDetails: businessDetailsReducer,
   },
 });
 
