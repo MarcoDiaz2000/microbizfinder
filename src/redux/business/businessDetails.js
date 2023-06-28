@@ -1,11 +1,9 @@
 import { getBusinessDetails } from '../../apis/yelpAPI';
 
-// Action types
 export const REQUEST_BUSINESS_DETAILS = 'REQUEST_BUSINESS_DETAILS';
 export const RECEIVE_BUSINESS_DETAILS = 'RECEIVE_BUSINESS_DETAILS';
 export const ERROR_BUSINESS_DETAILS = 'ERROR_BUSINESS_DETAILS';
 
-// Action creators
 export const requestBusinessDetails = () => ({
   type: REQUEST_BUSINESS_DETAILS,
 });
@@ -20,7 +18,6 @@ export const errorBusinessDetails = (error) => ({
   payload: error,
 });
 
-// Reducer
 const initialState = {
   isFetching: false,
   details: null,
@@ -51,7 +48,6 @@ export const businessDetailsReducer = (state = initialState, action) => {
   }
 };
 
-// Thunk
 export const fetchBusinessDetails = (id) => async (dispatch) => {
   dispatch(requestBusinessDetails());
 

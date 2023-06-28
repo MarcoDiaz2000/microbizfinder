@@ -1,27 +1,19 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import SearchForm from '../components/SearchForm';
-import { searchBusinesses } from '../apis/yelpAPI';
-import BusinessList from '../components/BusinessList';
+import ServiceModule from '../components/ServiceModule';
+import logo from '../images/logo.svg';
 
-const Home = () => {
-  const [businesses, setBusinesses] = useState([]);
-
-  const handleSearch = useCallback(async (searchParams) => {
-    try {
-      const results = await searchBusinesses(searchParams.location, searchParams.term);
-      setBusinesses(results);
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
-
-  return (
-    <div>
-      <h1>Home</h1>
-      <SearchForm onSearch={handleSearch} />
-      <BusinessList businesses={businesses} />
+const Home = () => (
+  <div>
+    <div className="home-banner">
+      <img src={logo} alt="Logo" className="home-logo" />
+      <h1 className="home-title">Discover & Explore Montreal</h1>
+      <p className="home-subtitle">Discover the best places to eat, drink and shop in Montreal.</p>
+      <SearchForm />
     </div>
-  );
-};
+    <h2 className="section-title">What Do You Want To Do Today?</h2>
+    <ServiceModule />
+  </div>
+);
 
 export default Home;

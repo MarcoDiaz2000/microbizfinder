@@ -6,8 +6,8 @@ import Header from './components/Header';
 import './styles/App.css';
 import Home from './pages/Home';
 import Details from './pages/Details';
-import Results from './pages/Results';
 import store from './redux/store';
+import Services from './pages/Services';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
           <Route path="/microbizfinder" element={<Navigate to="/" />} />
           <Route path="/" element={<Home />} />
           <Route path="/details/:id" element={<Details />} />
-          <Route path="/results" element={<Results />} />
+          <Route path="/services/:id" element={<Services />} />
           <Route path="*" element={<div>If page not found it goes here</div>} />
         </Routes>
       </Router>

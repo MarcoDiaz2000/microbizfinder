@@ -1,26 +1,25 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa';
 import logo from '../images/logo.svg';
 
-const Header = () => (
-  <div className="navbar">
-    <NavLink to="/">
-      <img src={logo} className="logo" alt="logo" />
-    </NavLink>
-    <nav>
-      <ul>
-        <li>
-          <NavLink to="/" className="nav-link">Home</NavLink>
-        </li>
-        <li>
-          <NavLink to="/details" className="nav-link">Details</NavLink>
-        </li>
-        <li>
-          <NavLink to="/results" className="nav-link">Results</NavLink>
-        </li>
-      </ul>
-    </nav>
-  </div>
-);
+const Header = () => {
+  const location = useLocation();
+
+  if (location.pathname === '/') {
+    return null;
+  }
+
+  return (
+    <div className="navbar">
+      <FaArrowLeft className="back-button" onClick={() => window.history.back()} />
+      <div className="logo-container">
+        <NavLink to="/">
+          <img src={logo} className="logo" alt="logo" />
+        </NavLink>
+      </div>
+    </div>
+  );
+};
 
 export default Header;

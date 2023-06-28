@@ -1,47 +1,36 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+import { FiSearch } from 'react-icons/fi';
 
-const SearchForm = ({ onSearch }) => {
+const SearchForm = () => {
   const [term, setTerm] = useState('');
-  const [location, setLocation] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    onSearch({ term, location });
+    navigate(`/services/${term}`);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="search-form">
       <label htmlFor="what">
-        What:
         <input
           type="text"
           value={term}
           onChange={(e) => setTerm(e.target.value)}
-          placeholder="Ex: food, service, barber, etc."
+          placeholder="Ex: food, drink, shopping, etc."
           id="what"
+          className="search-input"
         />
       </label>
 
-      <label htmlFor="where">
-        Where:
-        <input
-          type="text"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-          placeholder="Ex: Mexico City, MX"
-          id="where"
-        />
-      </label>
-
-      <input type="submit" value="Search" />
+      <button type="submit" className="search-button">
+        <FiSearch size={20} color="white" />
+        <span>Search</span>
+      </button>
     </form>
   );
-};
-
-SearchForm.propTypes = {
-  onSearch: PropTypes.func.isRequired,
 };
 
 export default SearchForm;

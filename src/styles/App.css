@@ -1,39 +1,163 @@
-body {
+/* body {
   margin: 0;
   padding: 0;
   padding-left: 30px;
   padding-right: 30px;
-}
+} */
+
+/* Header */
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
+}
+
+.back-button {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
 }
 
 .logo {
   height: 80px;
 }
 
-.nav-link {
-  font-size: 24px;
-  color: blue;
-  margin-right: 20px;
-}
+/* Home */
 
-ul {
-  list-style-type: none;
+.home-banner {
+  background: url('../images/montreal.jpg') no-repeat center center;
+  background-size: cover;
+  width: 100%;
+  height: 550px;
+  position: relative;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-ul li:not(:last-child)::after {
-  content: '|';
-  margin-left: 20px;
+.home-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
 }
 
-ul li {
-  margin-right: 20px;
+.home-logo {
+  width: 120px;
+  height: 120px;
+  z-index: 2;
+}
+
+.home-title {
+  font-family: 'Nombre de tu fuente', serif;
+  font-size: 3em;
+  color: white;
+  z-index: 1;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.home-subtitle {
+  font-size: 1.2em;
+  color: white;
+  z-index: 1;
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.section-title {
+  text-align: center;
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* ServiceModule */
+
+.service-module {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.service-button {
+  width: 250px;
+  height: 250px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-content {
+  z-index: 1;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.service-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.service-button:hover:before {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* SearchForm */
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  z-index: 1;
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+.search-input {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 18px;
+}
+
+.search-button {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 10px;
+  color: white;
+  background-color: rgb(70, 80, 231);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
 }

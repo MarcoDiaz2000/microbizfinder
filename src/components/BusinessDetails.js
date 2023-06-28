@@ -33,8 +33,6 @@ const BusinessDetails = () => {
   return (
     <div>
       <h1>{details.name}</h1>
-      {/* Aquí puedes renderizar el resto de los detalles del negocio */}
-      {/* Por ejemplo: */}
       <p>{details.phone}</p>
       <p>{details.location.address1}</p>
       <p>{details.location.city}</p>
@@ -49,7 +47,6 @@ const BusinessDetails = () => {
         {' '}
         reviews
       </p>
-      {/* y más... */}
     </div>
   );
 };

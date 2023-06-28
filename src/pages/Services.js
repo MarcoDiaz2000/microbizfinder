@@ -1,0 +1,31 @@
+import React, { useCallback, useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { searchBusinesses } from '../apis/yelpAPI';
+import BusinessList from '../components/BusinessList';
+
+const Services = () => {
+  const [businesses, setBusinesses] = useState([]);
+  const { id } = useParams();
+
+  const handleSearch = useCallback(async () => {
+    try {
+      const results = await searchBusinesses('Montreal', id);
+      setBusinesses(results);
+    } catch (error) {
+      console.error(error);
+    }
+  }, [id]);
+
+  useEffect(() => {
+    handleSearch();
+  }, [handleSearch]);
+
+  return (
+    <div>
+      <h1>{id.charAt(0).toUpperCase() + id.slice(1)}</h1>
+      <BusinessList businesses={businesses} />
+    </div>
+  );
+};
+
+export default Services;
