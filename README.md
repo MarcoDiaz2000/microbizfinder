@@ -31,7 +31,7 @@
 
 The application was created with React and Redux, using the Yelp fuction API.
 
-Develop the application with a geolocalized directory, in which tourists and residents can easily search for services and entertainment in the city of Montreal, QC, Canada.
+Develop the application for a geolocated micro directory, where tourists and residents can easily search for services and entertainment in the city of Montreal, QC, Canada.
 
 The application is designed so that you can easily create local directories for other cities, changing only a few fragments of the code.
 
