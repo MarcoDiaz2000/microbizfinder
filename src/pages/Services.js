@@ -12,7 +12,7 @@ const Services = () => {
       const results = await searchBusinesses('Montreal', id);
       setBusinesses(results);
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   }, [id]);
 
