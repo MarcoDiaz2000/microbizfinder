@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { searchBusinesses } from '../apis/yelpAPI';
+import { searchBusinesses } from '../redux/business/yelpAPI';
 import BusinessList from '../components/BusinessList';
 
 const Services = () => {
@@ -22,7 +22,9 @@ const Services = () => {
 
   return (
     <div>
-      <h1>{id.charAt(0).toUpperCase() + id.slice(1)}</h1>
+      <div className="services-title">
+        <h1>{id.charAt(0).toUpperCase() + id.slice(1)}</h1>
+      </div>
       <BusinessList businesses={businesses} />
     </div>
   );

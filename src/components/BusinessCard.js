@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const BusinessCard = ({ business }) => (
-  <div className="business-card" data-testid="business-card">
+  <div
+    className="business-card"
+    data-testid="business-card"
+    style={{ backgroundImage: `url(${business.image_url})` }}
+  >
     <h2>{business.name}</h2>
-    <img src={business.image_url} alt={business.name} />
     <p>{business.categories.map((category) => category.title).join(', ')}</p>
-    <p>{`${business.location.address1}, ${business.location.city}`}</p>
     <p>{`Rating: ${business.rating} / 5`}</p>
     <Link to={`/details/${business.id}`}>See details</Link>
   </div>
-
 );
 
 BusinessCard.propTypes = {

@@ -8,7 +8,7 @@ const BusinessList = ({ businesses }) => {
   }
 
   return (
-    <div>
+    <div className="business-list">
       {businesses.map((business) => (
         <BusinessCard key={business.id} business={business} />
       ))}

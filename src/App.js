@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Details from './pages/Details';
 import store from './redux/store';
 import Services from './pages/Services';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/services/:id" element={<Services />} />
           <Route path="*" element={<div>If page not found it goes here</div>} />
         </Routes>
+        <Footer />
       </Router>
     </Provider>
   );

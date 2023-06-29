@@ -31,22 +31,39 @@ const BusinessDetails = () => {
   }
 
   return (
-    <div>
-      <h1>{details.name}</h1>
-      <p>{details.phone}</p>
-      <p>{details.location.address1}</p>
-      <p>{details.location.city}</p>
-      <p>{details.location.zip_code}</p>
-      <img src={details.image_url} alt={details.name} />
-      <p>
-        Rating:
-        {details.rating}
-      </p>
-      <p>
-        {details.review_count}
-        {' '}
-        reviews
-      </p>
+    <div className="detail-container">
+      <img className="detail-image" src={details.image_url} alt={details.name} />
+      <div className="detail-header">
+        <h1>{details.name}</h1>
+      </div>
+      <div className="detail-body">
+        <p className="detail-item">
+          <strong>Phone:</strong>
+          {' '}
+          {details.phone}
+        </p>
+        <p className="detail-item">
+          <strong>Address:</strong>
+          {' '}
+          {details.location.address1}
+          ,
+          {' '}
+          {details.location.city}
+          ,
+          {' '}
+          {details.location.zip_code}
+        </p>
+        <p className="detail-item">
+          <strong>Rating:</strong>
+          {' '}
+          {details.rating}
+        </p>
+        <p className="detail-item">
+          <strong>Reviews:</strong>
+          {' '}
+          {details.review_count}
+        </p>
+      </div>
     </div>
   );
 };

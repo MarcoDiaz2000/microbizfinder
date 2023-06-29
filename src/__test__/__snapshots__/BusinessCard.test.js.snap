@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BusinessCard matches snapshot 1`] = `
+<div>
+  <div
+    class="business-card"
+    data-testid="business-card"
+    style="background-image: url(example.com/image.jpg);"
+  >
+    <h2>
+      Example Business
+    </h2>
+    <p>
+      Category 1, Category 2
+    </p>
+    <p>
+      Rating: 4.5 / 5
+    </p>
+    <a
+      href="/details/1"
+    >
+      See details
+    </a>
+  </div>
+</div>
+`;

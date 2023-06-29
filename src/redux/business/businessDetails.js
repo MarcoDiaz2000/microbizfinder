@@ -1,4 +1,4 @@
-import { getBusinessDetails } from '../../apis/yelpAPI';
+import { getBusinessDetails } from './yelpAPI';
 
 export const REQUEST_BUSINESS_DETAILS = 'REQUEST_BUSINESS_DETAILS';
 export const RECEIVE_BUSINESS_DETAILS = 'RECEIVE_BUSINESS_DETAILS';
