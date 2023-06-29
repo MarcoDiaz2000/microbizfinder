@@ -1,32 +1,63 @@
 const axios = require('axios');
 
-const API_KEY = 'x3d8TIeRs6qtNZ_ZodU6PgC5tmNIq67bRDcrV79LGcsqleO5w_4S-mSDegabgGdsEeBZH9tY98qFv9_SaF1p8f0H_c7So1nTBVruKXhha7USGxhMI4KbyxOCaCyYZHYx';
+const { API_KEY } = process.env;
 
-const handler = async function (event) {
-  const endpoint = 'https://api.yelp.com/v3/businesses/search';
-  const { location } = event.queryStringParameters;
-  const { term } = event.queryStringParameters;
+const getBusinessDetails = async (businessId) => {
+  const url = `https://api.yelp.com/v3/businesses/${businessId}`;
 
   try {
-    const response = await axios.get(endpoint, {
+    const result = await axios.get(url, {
       headers: {
         Authorization: `Bearer ${API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    return { statusCode: 200, body: JSON.stringify(result.data) };
+  } catch (err) {
+    return { statusCode: 422, body: String(err) };
+  }
+};
+
+const searchBusinesses = async (location, term) => {
+  const url = 'https://api.yelp.com/v3/businesses/search';
+
+  try {
+    const result = await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${API_KEY}`,
+        'Content-Type': 'application/json',
       },
       params: {
         location,
         term,
       },
     });
-    return {
-      statusCode: 200,
-      body: JSON.stringify(response.data.businesses),
-    };
-  } catch (error) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: 'Error accessing Yelp API' }),
-    };
+    return { statusCode: 200, body: JSON.stringify(result.data.businesses) };
+  } catch (err) {
+    return { statusCode: 422, body: String(err) };
   }
 };
 
-module.exports = { handler };
+exports.handler = async (event) => {
+  const path = event.path.replace(/\.netlify\/functions\/[^/]+/, '');
+  const segments = path.split('/').filter((e) => e);
+
+  let location; let
+    term;
+  if (event.queryStringParameters) {
+    location = event.queryStringParameters.location;
+    term = event.queryStringParameters.term;
+  }
+
+  switch (event.httpMethod) {
+    case 'GET':
+      if (segments.length === 1) {
+        const businessId = segments[0];
+        return getBusinessDetails(businessId);
+      }
+      return searchBusinesses(location, term);
+
+    default:
+      return { statusCode: 405, body: 'Method Not Allowed' };
+  }
+};
