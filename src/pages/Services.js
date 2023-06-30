@@ -5,20 +5,30 @@ import BusinessList from '../components/BusinessList';
 
 const Services = () => {
   const [businesses, setBusinesses] = useState([]);
+  const [error, setError] = useState(null);
   const { id } = useParams();
 
   const handleSearch = useCallback(async () => {
     try {
       const results = await searchBusinesses('Montreal', id);
       setBusinesses(results);
+      setError(null);
     } catch (error) {
-      // console.error(error);
+      setError('There was an error searching for businesses. Please try again later.');
     }
   }, [id]);
 
   useEffect(() => {
     handleSearch();
   }, [handleSearch]);
+
+  if (error) {
+    return (
+      <div>
+        <p>{error}</p>
+      </div>
+    );
+  }
 
   return (
     <div>
