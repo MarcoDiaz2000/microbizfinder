@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BusinessList renders null when no businesses are provided 1`] = `<div />`;
+
+exports[`BusinessList renders the list of businesses correctly 1`] = `
+<div>
+  <div
+    class="business-list"
+  >
+    <div
+      class="business-card"
+      data-testid="business-card"
+      style="background-image: url(image1.jpg);"
+    >
+      <h2>
+        Business 1
+      </h2>
+      <p>
+        Category 1, Category 2
+      </p>
+      <p>
+        Rating: 4.5 / 5
+      </p>
+      <a
+        href="/details/1"
+      >
+        See details
+      </a>
+    </div>
+  </div>
+</div>
+`;

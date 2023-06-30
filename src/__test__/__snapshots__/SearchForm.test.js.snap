@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchForm navigates to the correct path on form submission 1`] = `
+<DocumentFragment>
+  <form
+    class="search-form"
+  >
+    <label
+      for="what"
+    >
+      <input
+        class="search-input"
+        id="what"
+        placeholder="Ex: food, drink, shopping, etc."
+        type="text"
+        value="food"
+      />
+    </label>
+    <button
+      class="search-button"
+      type="submit"
+    >
+      <svg
+        color="white"
+        fill="none"
+        height="20"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        style="color: white;"
+        viewBox="0 0 24 24"
+        width="20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="11"
+          cy="11"
+          r="8"
+        />
+        <line
+          x1="21"
+          x2="16.65"
+          y1="21"
+          y2="16.65"
+        />
+      </svg>
+      <span>
+        Search
+      </span>
+    </button>
+  </form>
+</DocumentFragment>
+`;
