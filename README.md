@@ -72,7 +72,7 @@ API Yelp fuction
 
 ## 🔭 Video Presentation <a name="video"></a>
 
-- [Video Presentation](https://www.loom.com/share/03549f675fe54474b384441a00cb528c?sid=0a9c83c1-c552-4cef-977a-c586bce54137)
+- [Video Presentation](https://www.loom.com/share/03549f675fe54474b384441a00cb528c?sid=0a9c83c1-c552-4cef-977a-c586bce54137) 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
